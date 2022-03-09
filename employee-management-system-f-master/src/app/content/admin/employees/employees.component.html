@@ -1,0 +1,142 @@
+<div class="mat-elevation-z8">
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search for">
+  </mat-form-field>
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>first name</th>
+      <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> last name</th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> email</th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="salary">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> salary</th>
+      <td mat-cell *matCellDef="let element"> {{element.salary}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="occupation">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> occupation</th>
+      <td mat-cell *matCellDef="let element"> {{element.occupation}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="empAuthLevel">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> app role</th>
+      <td mat-cell *matCellDef="let element"> {{element.empAuthLevel.substring(5)}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="currentMonthWorkingHours">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>workhours counter</th>
+      <td mat-cell *matCellDef="let element"> {{element.currentMonthWorkingHours}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="remainingDayOffs">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>day off counter</th>
+      <td mat-cell *matCellDef="let element"> {{element.remainingDayOffs}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+
+        <button mat-icon-button color="primary" aria-label="Example icon-button with a heart icon"
+                (click)="addDialogEmployee()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-header-cell>
+
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button color="accent" [disabled]="row.empAuthLevel === 'ROLE_ADMIN'"
+                (click)="editDialogEmployee(row.id,
+                row.firstName,
+                row.lastName,
+                row.email,
+                row.salary,
+                row.occupation,
+                row.empAuthLevel,
+                row.currentMonthWorkingHours,
+                row.remainingDayOffs)">
+          <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="accent" [disabled]="row.empAuthLevel === 'ROLE_ADMIN'"
+                (click)="deleteDialogEmployee(row.id)">
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+
+
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Latest Members</h3>
+
+    <div class="card-tools">
+      <span class="badge badge-danger">8 New Members</span>
+      <button type="button" class="btn btn-tool" data-card-widget="collapse">
+        <i class="fas fa-minus"></i>
+      </button>
+      <button type="button" class="btn btn-tool" data-card-widget="remove">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body p-0">
+    <ul class="users-list clearfix">
+      <li>
+        <img _ngcontent-enl-c140="" src="assets/img/admin1.png" alt="here should be admin img">
+        <a class="users-list-name" href="#">Martial Biongol</a>
+        <span class="users-list-date">Today</span>
+      </li>
+      <li>
+        <img _ngcontent-wjb-c140="" src="assets/img/avatar.png" alt="here should be user img" class="ng-star-inserted" style="">
+        <a class="users-list-name" href="#">Jean</a>
+        <span class="users-list-date">Yesterday</span>
+      </li>
+      <li>
+        <img src="assets/img/avatar2.png" alt="User Image">
+        <a class="users-list-name" href="#">Ronaldo</a>
+        <span class="users-list-date">12 Jan</span>
+      </li>
+      <li>
+        <img src="assets/img/avatar3.png" alt="User Image">
+        <a class="users-list-name" href="#">Frederica</a>
+        <span class="users-list-date">12 Jan</span>
+      </li>
+      <li>
+        <img src="assets/img/avatar4.png" alt="User Image">
+        <a class="users-list-name" href="#">Vanel</a>
+        <span class="users-list-date">13 Jan</span>
+      </li>
+      <li>
+        <img src="assets/img/avatar5.png" alt="User Image">
+        <a class="users-list-name" href="#">Erica</a>
+        <span class="users-list-date">14 Jan</span>
+      </li>
+     
+    </ul>
+    <!-- /.users-list -->
+  </div>
+  <!-- /.card-body -->
+  <div class="card-footer text-center">
+    <a href="javascript:">View All Users</a>
+  </div>
+  <!-- /.card-footer -->
+</div>

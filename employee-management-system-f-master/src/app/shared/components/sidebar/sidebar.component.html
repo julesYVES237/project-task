@@ -1,0 +1,73 @@
+<mat-nav-list>
+  <div class="profile-card">
+    <div class="header"></div>
+    <h2>{{username}}</h2>
+    <h4>{{email}}</h4>
+
+    <div *ngIf="isAdmin; else elseUserImg">
+    <img  src="assets/img/admin1.png" alt="here should be admin img">
+    </div>
+
+    <ng-template #elseUserImg><img  src="assets/img/user1.png" alt="here should be user img"></ng-template>
+    <div *ngIf="isAdmin; else elseUserRole">
+      <h4 style="font-weight: bold">ADMIN</h4>
+    </div>
+
+    <ng-template #elseUserRole>
+      <h4 style="font-weight: bold">USER</h4>
+    </ng-template>
+
+
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <h2 matSubheader>App Links</h2>
+
+  <div *ngIf="isAdmin; else elseUserLinks">
+  <!--  Admin app links  -->
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/ems/dashboardadmin"><mat-icon>dashboard</mat-icon>Dashboard</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/ems/edit"><mat-icon>build</mat-icon>Edit Profile</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/ems/employees"><mat-icon>supervised_user_circle</mat-icon>Employee List</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/ems/tasksadmin"><mat-icon>assignment</mat-icon>Tasks</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/ems/vacations"><mat-icon>flight_takeoff</mat-icon>Vacation</a>
+</div>
+  <ng-template #elseUserLinks>
+  <!--User App links -->
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/ems/dashboarduser">	<mat-icon>dashboard</mat-icon>Dashboard</a>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/ems/edit"><mat-icon>build</mat-icon>Edit Profile</a>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/ems/tasksuser"><mat-icon>assignment</mat-icon>Tasks</a>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/ems/vacationreq"><mat-icon>flight_takeoff</mat-icon>Vacation Request</a>
+
+    <mat-divider></mat-divider>
+
+    <h2 matSubheader>Tools</h2>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/ems/contactadmin">
+      <mat-icon>import_contacts</mat-icon>Contact Admin</a>
+  </ng-template>
+
+
+<!--  <mat-divider></mat-divider>-->
+
+<!--  <h2 matSubheader>Tools</h2>-->
+<!--  <a mat-list-item routerLinkActive="list-item-active" routerLink="/ems/contactadmin">-->
+<!--    <mat-icon>import_contacts</mat-icon>Contact Admin</a>-->
+
+<!--    <a href="mailto:janinanowak@wp.com">-->
+<!--      <mat-icon>import_contacts</mat-icon>-->
+<!--      Mail to Admin-->
+<!--    </a>-->
+
+<!--  <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">-->
+<!--    <mat-icon>contact_phone</mat-icon>-->
+<!--    Leads-->
+<!--  </a>-->
+
+
+  </mat-nav-list>
+
+

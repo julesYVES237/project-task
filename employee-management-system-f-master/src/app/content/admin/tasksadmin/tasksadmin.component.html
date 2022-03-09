@@ -1,0 +1,147 @@
+<h2>Assigned tasks:</h2>
+
+<div class="mat-elevation-z8">
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilterTa($event.target.value)" placeholder="Search for">
+  </mat-form-field>
+  <table #table1 mat-table [dataSource]="dataSourceTa" matSort class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Task id</th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> description</th>
+      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> status</th>
+      <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="startDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> startDate</th>
+      <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="endDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> endDate</th>
+      <td mat-cell *matCellDef="let element"> {{element.endDate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="employeeFirstName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> first Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.employeeFirstName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="employeeLastName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> last Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.employeeLastName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+
+      <mat-header-cell *matHeaderCellDef>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button color="primary" (click)="unassignTask(row.id)">
+          <mat-icon matTooltip="Uassign Task">clear</mat-icon>
+        </button>
+
+        <button mat-icon-button color="accent" (click)="editTaskDialog(row.id, row.description
+        ,row.status,row.startDate,row.endDate)">
+          <mat-icon matTooltip="Edit Task">edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="accent" (click)="deleteTaskDialog(row.id)">
+          <mat-icon matTooltip="Delete Task">delete</mat-icon>
+        </button>
+      </mat-cell>
+
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsTa">
+    </tr>
+
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsTa;"
+        [ngClass]="{'task-complete': row.status==='DONE','task-new': row.status==='NEW'}"></tr>
+
+  </table>
+  <mat-paginator #firstPaginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+
+<br>
+
+<h2>Unassigned tasks:</h2>
+
+<div class="mat-elevation-z8">
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilterTu($event.target.value)" placeholder="Search for">
+  </mat-form-field>
+  <table #table2 mat-table [dataSource]="dataSourceTu" matSort class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Task id</th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> description</th>
+      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> status</th>
+      <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="startDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> startDate</th>
+      <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="endDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> endDate</th>
+      <td mat-cell *matCellDef="let element"> {{element.endDate}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="actions">
+
+      <mat-header-cell *matHeaderCellDef>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-raised-button color="primary" matTooltip="Assign Task to Employee"
+                (click)="assignTask(row.id)">Assign Task
+        </button>
+
+        <button mat-icon-button color="accent" (click)="editTaskDialog(row.id, row.description
+        ,row.status,row.startDate,row.endDate)">
+          <mat-icon matTooltip="Edit Task">edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="accent" (click)="deleteTaskDialog(row.id)">
+          <mat-icon matTooltip="Delete Task">delete</mat-icon>
+        </button>
+
+      </mat-cell>
+
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsTu">
+    </tr>
+
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsTu;"
+        [ngClass]="{'task-complete': row.status==='DONE','task-new': row.status==='NEW'}"></tr>
+
+  </table>
+  <mat-paginator #secondPaginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+<br>
+<button matTooltip="Add New Task" class="add-task-button" mat-raised-button color="primary" type="submit"
+        (click)="addNewTask()">Add new Task
+</button>

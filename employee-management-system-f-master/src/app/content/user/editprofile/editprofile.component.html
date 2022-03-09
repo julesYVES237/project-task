@@ -1,0 +1,100 @@
+<!-- <h2>Edit your Profile:</h2>
+<div class="example-container">
+
+  <mat-form-field appearance="fill" [style.width.px]=200>
+    <mat-label>first name</mat-label>
+    <input matInput [(ngModel)]="employeeUser.firstName">
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field appearance="fill" [style.width.px]=200>
+    <mat-label>last name</mat-label>
+    <input matInput [(ngModel)]="employeeUser.lastName">
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field appearance="fill" [style.width.px]=200>
+    <mat-label>email</mat-label>
+    <input matInput [(ngModel)]="employeeUser.email">
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field appearance="fill" [style.width.px]=200>
+    <mat-label>Enter your password</mat-label>
+    <input matInput [(ngModel)]="employeeUser.password" [type]="hide ? 'password' : 'text'">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <br>
+  <button mat-raised-button color="primary" type="submit" (click)="submitChanges()">Save Data</button>
+
+</div> -->
+<div class="card">
+  <div class="card-header border-transparent">
+    <h3 class="card-title">Editer le profile</h3>
+
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse">
+        <i class="fas fa-minus"></i>
+      </button>
+      <button type="button" class="btn btn-tool" data-card-widget="remove">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table m-0">
+        <thead>
+        <tr>
+          <th>first name</th>
+          <th>last name</th>
+          <th>email</th>
+          <th>Password</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><mat-form-field appearance="fill" [style.width.px]=200>
+            <mat-label>first name</mat-label>
+            <input matInput [(ngModel)]="employeeUser.firstName">
+          </mat-form-field></td>
+          <td> <mat-form-field appearance="fill" [style.width.px]=200>
+            <mat-label >last name</mat-label>
+            <input matInput [(ngModel)]="employeeUser.lastName">
+          </mat-form-field></td>
+          <td><!-- <span class="badge badge-success">Shipped</span> -->
+            <mat-form-field appearance="fill" [style.width.px]=200>
+              <mat-label>email</mat-label>
+              <input matInput [(ngModel)]="employeeUser.email">
+            </mat-form-field></td>
+          <td>
+            <mat-form-field appearance="fill" [style.width.px]=200>
+              <mat-label>Enter your password</mat-label>
+              <input matInput [(ngModel)]="employeeUser.password" [type]="hide ? 'password' : 'text'">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                      [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+          </td>
+        </tr>
+        
+        </tbody>
+      </table>
+    </div>
+    <!-- /.table-responsive -->
+  </div>
+  <!-- /.card-body -->
+  <div class="card-footer clearfix">
+    <button mat-raised-button color="primary" type="submit" (click)="submitChanges()">Save Data</button>
+  </div>
+  <!-- /.card-footer -->
+</div>

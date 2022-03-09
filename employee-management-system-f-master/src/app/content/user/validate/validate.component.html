@@ -1,0 +1,26 @@
+<div class="container">
+    <br>
+    <br>
+    <br>
+    <form [formGroup] = "userForm" (ngSubmit) = "add()">
+  
+      <label for="fname">First Name</label>
+      <input type="text" id="fname" name="firstname"  formControlName="user" placeholder="Your name..">
+      <label for="fname">price</label>
+      <input type="text" id="fname" name="firstname"  formControlName="price" placeholder="Your name..">
+      <label for="lname">phone</label>
+      <input type="text" id="lname" name="lastname"  formControlName="phone" placeholder="Your last name..">
+  
+      <label for="country">command</label>
+      <select id="country" name="country"  formControlName="nomCmd">
+        <option value="australia">pack1</option>
+        <option value="pack1">pack1</option>
+        <option value="pack3">pack3</option>
+      </select>
+  
+      <label for="subject">Subject</label>
+      <textarea id="subject" name="subject" placeholder="Write something.." style="height:150px"  formControlName="text"></textarea>
+  
+        <button class="btn btn-primary" type="submit" [disabled]="userForm.invalid">Pcurchase</button>
+    </form>
+  </div>

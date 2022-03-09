@@ -1,0 +1,49 @@
+<h3 mat-dialog-title>Editing existing Task</h3>
+
+<form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+
+  <div class="form">
+    <mat-form-field color="accent">
+      <mat-label></mat-label>
+      <input matInput #input class="form-control" placeholder="description" [(ngModel)]="task.description"
+             name="description" required>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Status</mat-label>
+    <mat-select [(value)]="task.status" required>
+      <mat-option value="NEW">NEW</mat-option>
+      <mat-option value="DONE">DONE</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Choose a end date</mat-label>
+      <input matInput [matDatepicker]="picker1" [(ngModel)]="taskStartDate" name="firstdp" required>
+      <mat-datepicker-toggle matSuffix [for]="picker1">
+        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div class="form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Choose a end date</mat-label>
+      <input matInput [matDatepicker]="picker2" [(ngModel)]="taskEndDate" name="seconddp" required>
+      <mat-datepicker-toggle matSuffix [for]="picker2">
+        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button color="primary" [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1"
+            (click)="confirmEdit()">Save
+    </button>
+    <button mat-button color="accent" (click)="onNoClick()" tabindex="-1">Cancel</button>
+  </div>
+</form>

@@ -1,0 +1,65 @@
+<h3 mat-dialog-title>Editing existing Employee</h3>
+
+<form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+
+  <div class="form">
+    <mat-form-field color="accent" [style.width.px]=200>
+      <mat-label>First Name</mat-label>
+      <input matInput #input class="form-control" placeholder="first name" [(ngModel)]="employee.firstName" name="firstName"  required >
+    </mat-form-field>
+  </div>
+
+  <div class="form">
+    <mat-form-field color="accent" [style.width.px]=200>
+      <input matInput #input class="form-control" placeholder="last name" [(ngModel)]="employee.lastName" name="LastName" required >
+    </mat-form-field>
+  </div>
+
+  <div class="form">
+    <mat-form-field color="accent" [style.width.px]=200>
+      <input matInput #input class="form-control" placeholder="email" [(ngModel)]="employee.email"  name="email" required >
+    </mat-form-field>
+  </div>
+
+
+  <div class="form">
+    <mat-form-field color="accent" [style.width.px]=200>
+      <input matInput #input class="form-control" placeholder="salary" [(ngModel)]="employee.salary"  name="salary" required >
+    </mat-form-field>
+  </div>
+
+  <div class="form">
+    <mat-form-field color="accent" [style.width.px]=200>
+      <input matInput #input class="form-control" placeholder="occupation" [(ngModel)]="employee.occupation"  name="occupation" required >
+    </mat-form-field>
+  </div>
+
+
+  <mat-form-field appearance="fill" [style.width.px]=200>
+    <mat-label>App Role</mat-label>
+    <select [(ngModel)]="employee.empAuthLevel"  matNativeControl name="empAuthlevel"  required>
+      <option value="ROLE_ADMIN">ADMIN</option>
+      <option value="ROLE_USER">USER</option>
+    </select>
+  </mat-form-field>
+
+  <div class="form">
+    <mat-form-field color="accent" [style.width.px]=200>
+      <input matInput #input class="form-control" placeholder="currentMonthWorkingHours" [(ngModel)]="employee.currentMonthWorkingHours" name="currentMonthWorkingHours" required >
+    </mat-form-field>
+  </div>
+
+  <div class="form">
+  <mat-form-field color="accent" [style.width.px]=200>
+    <input matInput #input class="form-control" placeholder="remainingsDayOffs" [(ngModel)]="employee.remainingDayOffs" name="remainingsDayOffs" required >
+  </mat-form-field>
+  </div>
+
+
+  <div mat-dialog-actions>
+    <button mat-button color="primary" [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="confirmEdit()">Save</button>
+    <button mat-button color="accent" (click)="onNoClick()" tabindex="-1">Cancel</button>
+  </div>
+</form>
+
+

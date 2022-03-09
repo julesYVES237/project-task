@@ -1,0 +1,49 @@
+<div class="mat-elevation-z8">
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search for">
+  </mat-form-field>
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> description</th>
+      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> status</th>
+      <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="startDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> startDate</th>
+      <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="endDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> endDate</th>
+      <td mat-cell *matCellDef="let element"> {{element.endDate}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="actions">
+
+      <mat-header-cell *matHeaderCellDef>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button color="primary" (click)="completeTask(row.id)">
+          <mat-icon matTooltip="Click to mark task as completed">done</mat-icon>
+        </button>
+      </mat-cell>
+
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" [ngClass]="'header-styles'">
+    </tr>
+
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+        [ngClass]="{'task-complete': row.status==='DONE','task-new': row.status==='NEW'}"></tr>
+
+  </table>
+  <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>
+</div>

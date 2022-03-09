@@ -1,0 +1,11 @@
+
+  {
+    "/api": {
+      "target": "https://spring-ems1.herokuapp.com/",
+      "secure": true,
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api": ""
+      }
+    }
+  }

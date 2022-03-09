@@ -1,0 +1,6 @@
+{
+	"appId": "com.emsc.app",
+	"appName": "ems_capacitor",
+	"webDir": "/www",
+	"bundledWebRuntime": false
+}
